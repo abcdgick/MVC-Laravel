@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App;
 use App\Models\Buku;
 use App\Models\Anggota;
 use App\Models\Pustakawan;
@@ -18,11 +19,17 @@ class ModelController extends Controller
         return view('buku', compact('data_buku'));
     }
 
-    public function createbuku(){
-        return view('createbuku');
+    // public function createbuku(){
+    //     return view('createbuku');
+    // }
+
+    public function createbuku($locale='id'){
+        App::setLocale($locale);
+        return view('createbuku', ["locale" => $locale]);
     }
 
     public function savebuku(Request $req){
+        App::setLocale($req->locale);
         $this->validate($req, [
             'judul' => 'required|string',
             'penulis' => 'required|string',
@@ -73,11 +80,13 @@ class ModelController extends Controller
         return view('anggota', compact('data_anggota'));
     }
 
-    public function createanggota(){
-        return view('createanggota');
+    public function createanggota($locale="id"){
+        App::setLocale($locale);
+        return view('createanggota', ["locale" => $locale]);
     }
 
     public function saveanggota(Request $req){
+        App::setLocale($req->locale);
         $this->validate($req, [
             'npm' => 'required|numeric',
             'nama' => 'required|string',
@@ -125,11 +134,13 @@ class ModelController extends Controller
         return view('pustakawan', compact('data_pustakawan'));
     }
 
-    public function createpustakawan(){
-        return view('createpustakawan');
+    public function createpustakawan($locale="id"){
+        App::setLocale($locale);
+        return view('createpustakawan', ["locale" => $locale]);
     }
 
     public function savepustakawan(Request $req){
+        App::setLocale($req->locale);
         $this->validate($req, [
             'nip' => 'required|numeric',
             'nama' => 'required|string',
