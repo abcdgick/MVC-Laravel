@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\ModelController@welcome');
 
-Route::get('/buku', 'App\Http\Controllers\ModelController@buku');
+Route::get('/buku/{locale?}', 'App\Http\Controllers\ModelController@buku');
 Route::get('/createbuku/{locale?}', 'App\Http\Controllers\ModelController@createbuku');
 Route::post('/savebuku', 'App\Http\Controllers\ModelController@savebuku');
 Route::get('/editbuku/{id}', 'App\Http\Controllers\ModelController@editbuku') -> name('ubahbuku');

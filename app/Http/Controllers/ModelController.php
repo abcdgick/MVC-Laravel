@@ -14,9 +14,10 @@ class ModelController extends Controller
         return view('welcome');
     }
     
-    public function buku(){
+    public function buku($locale ='id'){
+        App::setLocale($locale);
         $data_buku = Buku::all();
-        return view('buku', compact('data_buku'));
+        return view('buku', compact('data_buku'), ["locale" => $locale]);
     }
 
     // public function createbuku(){

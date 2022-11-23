@@ -2,25 +2,26 @@
 @section('title', 'Data Buku') 
 
 @section('content')
+<input type="hidden" name="locale" value="{{$locale}}">
 <div class="container mt-3">
 	@if(Session::has('pesan'))
 		<div class="alert alert-danger">{{Session::get('pesan')}}</div>
 	@endif
-  <h2>Data Buku</h2>
+  <h2>{{__('table.title')}}</h2>
   
-  <p><a href="/createbuku"><button class="btn btn-success mb-2">Tambah Buku</button></a></p>
+  <p><a href="/createbuku"><button class="btn btn-success mb-2">{{__('table.tampil.tombol1')}}</button></a></p>
 
   <table class="table table-bordered table-striped">
 	<thead class="table-success">
       	<tr style="text-align: center">
-        	<th>Id</th>
-        	<th>Judul</th>
-	    	<th>Penulis</th>
-			<th>Penerbit</th>
-			<th>Kategori</th>		
-			<th>Harga Buku</th>
-			<th>Edit</th>
-			<th>Hapus</th>
+        	<th>{{__('table.tampil.id')}}</th>
+        	<th>{{__('table.tampil.judul')}}</th>
+	    	<th>{{__('table.tampil.penulis')}}</th>
+			<th>{{__('table.tampil.penerbit')}}</th>
+			<th>{{__('table.tampil.kategori')}}</th>		
+			<th>{{__('table.tampil.harga')}}</th>
+			<th>{{__('table.tampil.tombol2')}}</th>
+			<th>{{__('table.tampil.tombol3')}}</th>
 		</tr>
 	</thead> 
 
@@ -33,11 +34,11 @@
 		<td>{{$buku->penerbit}}</td>
 		@php
 		   if ($buku->kodekategori == 'F')
-		      {$kategori = 'Fiksi';}
+		      {$kategori = __('table.tampil.pilihan_kategori.fiksi');}
            else if ($buku->kodekategori == 'S')
-		      {$kategori = 'Sains';}
+		      {$kategori = __('table.tampil.pilihan_kategori.sains');}
            else 
-		      {$kategori = 'Data ngaco';}
+		      {$kategori = __('table.tampil.pilihan_kategori.ngaco');}
 			$harga = number_format($buku->hargabuku, 2, ",", ".")
         @endphp      			  
 		<td>{{$kategori}}</td>	
@@ -50,7 +51,7 @@
 		<td style="text-align: center">
 			<form action="{{route('hapusbuku', $buku->id)}}" method="post">
 				@csrf
-				<button class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?')">
+				<button class="btn btn-danger btn-sm" onclick="return confirm('{{__('table.tampil.popup')}}')">
 					<span class="material-symbols-outlined">
 						delete
 					</span>
@@ -60,7 +61,9 @@
       </tr>
 	@endforeach  
 	</tbody>
-  </table>
+  	</table>
+  	<a href="/buku/en">English</a> | 
+	<a href="/buku">Indonesia</a> 
 </div>
 @endsection
 
