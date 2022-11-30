@@ -39,7 +39,7 @@
 		      {$kategori = __('table.tampil.pilihan_kategori.sains');}
            else 
 		      {$kategori = __('table.tampil.pilihan_kategori.ngaco');}
-			$harga = number_format($buku->hargabuku, 2, ",", ".")
+			$harga = number_format($buku->hargabuku, 2, ",", ".");
         @endphp      			  
 		<td>{{$kategori}}</td>	
 		<td>Rp. {{$harga}}</td>		

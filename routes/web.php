@@ -35,3 +35,10 @@ Route::post('/savepustakawan', 'App\Http\Controllers\ModelController@savepustaka
 Route::get('/editpustakawan/{id}', 'App\Http\Controllers\ModelController@editpustakawan') -> name('ubahpustakawan');
 Route::post('/updatepustakawan/{id}', 'App\Http\Controllers\ModelController@updatepustakawan') -> name('modifpustakawan');
 Route::post('/delpustakawan/{id}', 'App\Http\Controllers\ModelController@delpustakawan') -> name('hapuspustakawan');
+
+Route::get('/lap1', 'App\Http\Controllers\ModelController@lap1');
+Route::get('/lap2', 'App\Http\Controllers\ModelController@lap2');
+Route::get('/lap3', 'App\Http\Controllers\ModelController@lap3');
+Route::get('/lap4', 'App\Http\Controllers\ModelController@lap4');
+Route::get('/lap5', 'App\Http\Controllers\ModelController@lap5');
+Route::get('/lap6', 'App\Http\Controllers\ModelController@lap6');

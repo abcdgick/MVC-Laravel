@@ -29,16 +29,31 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/buku">Data Buku</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/anggota">Data Anggota</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/pustakawan">Data Pustakawan</a>
-      </li>
-     </ul>
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Data</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/buku">Data Buku</a></li>
+              <li><a class="dropdown-item" href="/anggota">Data Anggota</a></li>
+              <li><a class="dropdown-item" href="/pustakawan">Data Pustakawan</a></li>
+            </ul>
+          </li>	
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Laporan</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/lap1">Laporan Peminjaman</a></li>
+              <li><a class="dropdown-item" href="/lap2">Laporan Pembayaran Denda</a></li>
+            </ul>
+          </li>		
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Rekapitulasi</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/lap3">Rekap Peminjaman Per-Judul</a></li>
+              <li><a class="dropdown-item" href="/lap4">Rekap Peminjaman Per-Anggota</a></li>
+              <li><a class="dropdown-item" href="/lap5">Rekap Rata-rata Harga Buku Tiap Penerbit</a></li>
+              <li><a class="dropdown-item" href="/lap6">Rekap Jumlah Buku Tiap Penulis</a></li>			
+            </ul>
+          </li>			  
+      </ul>
   </div>
 </nav>
 

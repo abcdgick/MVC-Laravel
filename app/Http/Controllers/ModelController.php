@@ -7,6 +7,7 @@ use App\Models\Anggota;
 use App\Models\Pustakawan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ModelController extends Controller
 {
@@ -182,5 +183,63 @@ class ModelController extends Controller
         $pustakawan = Pustakawan::find($id);
         $pustakawan->delete();
         return redirect('/pustakawan')->with('pesan', 'Data pustakawan berhasil dihapus');
+    }
+
+    public function lap1(){
+        $data_lap1 = DB::select(
+            'SELECT P.id IdPinjam, A.nama NamaAgt, B.judul JudulBuku, P.lama LamaPinjam
+            FROM table_anggota A
+            JOIN table_peminjaman P ON (A.id=P.anggota_id)
+            JOIN table_buku B ON (B.id=P.buku_id)'
+        );
+        return view('lap1', compact('data_lap1'));
+    }
+
+    public function lap2(){
+        $data_lap2 = DB::select(
+            'SELECT P.id IdPinjam, A.nama NamaAgt, A.alamat AlamatAgt, B.judul JudulBuku, B.penulis PenulisBuku, P.lama LamaPinjam
+            FROM table_anggota A
+            JOIN table_peminjaman P ON (A.id=P.anggota_id)
+            JOIN table_buku B ON (B.id=P.buku_id)'
+        );
+        return view('lap2', compact('data_lap2'));
+    }
+
+    public function lap3(){
+        $data_lap3 = DB::select(
+            "SELECT judul, penulis, penerbit, count(*) as kali
+            FROM table_buku B
+            JOIN table_peminjaman P ON (P.buku_id = B.id)
+            GROUP BY B.id"
+        );
+        return view('lap3', compact('data_lap3'));
+    }
+
+    public function lap4(){
+        $data_lap4 = DB::select(
+            "SELECT npm, nama, alamat, count(*) as kali
+            FROM table_anggota A
+            JOIN table_peminjaman P ON (P.buku_id = A.id)
+            GROUP BY A.id"
+        );
+        return view("lap4", compact("data_lap4"));
+    }
+
+    public function lap5(){
+        $data_lap5 = DB::select(
+            "SELECT penerbit, avg(hargabuku) as rata
+            FROM table_buku
+            GROUP BY penerbit"
+        );
+        return view("lap5", compact("data_lap5"));
+    }
+
+    public function lap6(){
+        $data_lap6 = DB::select(
+            "SELECT penulis, count(*) as kali
+            FROM table_buku
+            GROUP BY penulis"
+        );
+        return view("lap6", compact("data_lap6"));
     }
 }
